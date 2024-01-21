@@ -12,7 +12,9 @@ public class Main {
             System.out.println("add - добавить номер в телефонный справочник");
             System.out.println("find - найти номер телефона по имени");
             System.out.println("print - вывести весь справочник");
-            String input = reader.readLine();
+            System.out.println("delete name - удалить из справочника данные по имени");
+            System.out.println("delete number - удалить из справочника телефон по имени");
+            String input = reader.readLine().trim();
             if (input.equals("exit")){
                 System.out.println("До свидания");
                 break;
@@ -30,6 +32,17 @@ public class Main {
             }
             if (input.equals("print")){
                 phoneBook.printPhoneBook();
+            }
+            if (input.equals("delete name")){
+                System.out.println("Введите имя:");
+                phoneBook.deleteName(reader.readLine());
+            }
+            if (input.equals("delete number")){
+                System.out.println("Введите имя:");
+                String name = reader.readLine();
+                System.out.println("Введите номер телефона:");
+                int number = Integer.parseInt(reader.readLine());
+                phoneBook.deleteNumber(name, number);
             }
         }
     }

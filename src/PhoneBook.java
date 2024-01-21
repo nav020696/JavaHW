@@ -31,4 +31,29 @@ public class PhoneBook {
             findNumber(entry.getKey());
         }
     }
+    public void deleteNumber(String name, int number){
+        if (phoneBook.containsKey(name)){
+            TreeSet<Integer> set = phoneBook.get(name);
+            if (set.contains(number)){
+                set.remove(number);
+                phoneBook.put(name, set);
+                System.out.printf("Данные по телефону %d у %s удалены\n", number, name);
+            }else{
+                System.out.printf("Данные по телефону %d у %s не найдены\n", number, name);
+            }
+        }
+        else{
+            System.out.printf("Данные об имени %s не найдены\n", name);
+        }
+    }
+
+    public void deleteName(String name){
+        if (phoneBook.containsKey(name)){
+            phoneBook.remove(name);
+            System.out.printf("Данные о %s удалены в справочнике\n",name);
+        }
+        else{
+            System.out.printf("Данные об имени %s не найдены\n", name);
+        }
+    }
 }
